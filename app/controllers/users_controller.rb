@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
   end
 
+  def login_result
+    userdata = params[:user]
+    @user = User.where(username: userdata[:username], password: userdata[:password]).first
+    redirect_to @user
+  end
+
   def create
     @user = User.new(user_params)
 
